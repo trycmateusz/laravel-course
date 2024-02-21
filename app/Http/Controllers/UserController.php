@@ -4,40 +4,35 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use Faker\Factory;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
     public function list () {
-        return view('user.list');
-    }
-    public function testShow (Request $request, int $id) {
-        $uri = $request->path();
-        $url = $request->url();
-        $fullUrl = $request->fullUrl();
-
-        $httpMethod = $request->method();
-
-        $all = $request->all();
-        $name = $request->query('name');
-        $lastName = $request->input('lastName', 'Tryc');
-
-        $game = $request->input('games.1');
-
-        if($request->isMethod('post')){
-            dump('to jest post');
+        $faker = Factory::create();
+        $users = [];
+        $count = $faker->numberBetween(3, 15);
+        for ($i = 0; $i < $count; $i++) {
+            $users[] = [
+                'id' => $faker->uuid,
+                'name' => $faker->firstName
+            ];
         }
-        dd($name);
-        dump('test user show ' . $id);
+        return view('user.list', [
+            'users' => $users
+        ]);
     }
-    public function testStore(Request $request, int $id){
-        if(!$request->isMethod('POST')){
-            return dd('to nie jest post');
-        }
-    }
-    public function testDelete(Request $request, int $id){
-        dd($id, $request);
-    }
-    public function testPut(Request $request, int $id){
-        dd($id, $request);
+    public function show (int $userId) {
+        $faker = Factory::create();
+        $user = [
+            'id' => $userId,
+            'name' => $faker->name,
+            'firstName' => $faker->firstName,
+            'lastName' => $faker->lastName,
+            'age' => $faker->numberBetween(12, 24)
+        ];
+        return view('user.show', [
+            'user' => $user
+        ]);
     }
 }

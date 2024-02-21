@@ -24,13 +24,16 @@ Route::get('/hello/{name}', [HelloController::class, 'hello']);
 
 Route::get('/users', [UserController::class, 'list'])
     ->name('get.users');
-Route::get('/users/test/{id}', [UserController::class, 'testShow'])
-    ->name('get.users.test');
-Route::post('/users/test/{id}', [UserController::class, 'testStore'])
-    ->name('get.users.test');
-Route::put('/users/test/{id}', [UserController::class, 'testPut'])
-    ->name('put.users.test');
-Route::delete('/users/test/{id}', [UserController::class, 'testDelete'])
-    ->name('delete.users.test');
 
-Route::resource('/games', GameController::class);
+Route::get('/users/{id}', [UserController::class, 'show'])
+    ->name('get.user.show');
+
+Route::resource('/games', GameController::class)
+    ->only([
+        'index', 'show'
+    ]);
+
+Route::resource('/admin/games', GameController::class)
+->only([
+    'store', 'create', 'destroy'
+]);
