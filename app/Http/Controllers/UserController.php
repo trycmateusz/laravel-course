@@ -22,10 +22,10 @@ class UserController extends Controller {
             'users' => $users
         ]);
     }
-    public function show (int $userId) {
+    public function show (string $id) {
         $faker = Factory::create();
         $user = [
-            'id' => $userId,
+            'id' => $id,
             'name' => $faker->name,
             'firstName' => $faker->firstName,
             'lastName' => $faker->lastName,

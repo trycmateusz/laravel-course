@@ -5,9 +5,9 @@
 @section('content')
 <ul>
     @foreach ($users as $user)
-    <div>
-        {{ $user['id'] . ' - ' . $user['name'] }}
-    </div>
+    @include('user.listRow', [
+    'userData' => $user
+    ])
     @endforeach
 </ul>
 @endsection
