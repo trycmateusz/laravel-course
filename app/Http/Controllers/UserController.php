@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Faker\Factory;
-use Illuminate\Http\Request;
 
 class UserController extends Controller {
     public function list () {
@@ -31,7 +30,7 @@ class UserController extends Controller {
             'lastName' => $faker->lastName,
             'age' => $faker->numberBetween(12, 24)
         ];
-        return view('user.show', [
+        return view('user.details', [
             'user' => $user
         ]);
     }

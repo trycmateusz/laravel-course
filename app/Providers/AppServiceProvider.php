@@ -20,6 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::share('applicationName', 'Fajna apensja');
+        View::share('applicationName', 'Kewlgame');
     }
 }

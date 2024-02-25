@@ -1,3 +1,5 @@
+@vite('')
+
 @extends('layout.main')
 
 @section('title', 'Uzytkownicy')
@@ -10,4 +12,5 @@
     ])
     @endforeach
 </ul>
+123
 @endsection

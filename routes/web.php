@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HelloController;
-use App\Http\Controllers\GameController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -16,24 +15,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class);
 
-Route::get('/hello/{name}', [HelloController::class, 'hello']);
 
 Route::get('/users', [UserController::class, 'list'])
     ->name('get.users');
 
 Route::get('/users/{id}', [UserController::class, 'show'])
-    ->name('get.user.show');
-
-Route::resource('/games', GameController::class)
-    ->only([
-        'index', 'show'
-    ]);
-
-Route::resource('/admin/games', GameController::class)
-->only([
-    'store', 'create', 'destroy'
-]);
+    ->name('get.user.details');

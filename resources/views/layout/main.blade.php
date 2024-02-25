@@ -8,26 +8,16 @@
     <title>
         @yield('title', $applicationName)
     </title>
+    @vite(['resources/sass/app.scss', 'resources/js/app.ts'])
 </head>
 
-<body>
-    <h1>
-        {{ $applicationName }}
-    </h1>
-    <aside>
-        @section('aside')
-        <ul>
-            <li>
-                <a href="#">
-                    Link jakis
-                </a>
-            </li>
-        </ul>
-        @show
-    </aside>
-    <main>
-        @yield('content')
-    </main>
+<body class="body">
+    <div id="app">
+        <the-aside></the-aside>
+        <main>
+            @yield('content')
+        </main>
+    </div>
 </body>
 
 </html>
