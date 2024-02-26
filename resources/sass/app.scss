@@ -1,0 +1,20 @@
+@use './reset' as r;
+
+html {
+    display: flex;
+    height: 100%;
+}
+
+.body {
+    background-color: c.$white-main;
+}
+
+#app {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+}
+
+.main {
+    @include m.padding;
+}

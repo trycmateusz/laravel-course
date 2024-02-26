@@ -13,8 +13,8 @@
 
 <body class="body">
     <div id="app">
-        <the-aside></the-aside>
-        <main>
+        <the-sidebar></the-sidebar>
+        <main class="main">
             @yield('content')
         </main>
     </div>

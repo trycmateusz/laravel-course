@@ -1,11 +1,11 @@
-import { createApp } from 'vue';
+import { createApp } from 'vue'
 
-const app = createApp({});
+const app = createApp({})
 
-import TheNavigation from './components/TheNavigation.vue';
-import TheAside from './components/TheAside.vue';
-app.component('TheNavigation', TheNavigation);
-app.component('TheAside', TheAside);
+import TheNavigation from './components/TheNavigation.vue'
+import TheSidebar from './components/TheSidebar.vue'
+app.component('TheNavigation', TheNavigation)
+app.component('TheSidebar', TheSidebar)
 
 /**
  * The following block of code may be used to automatically register your
@@ -25,4 +25,4 @@ app.component('TheAside', TheAside);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+app.mount('#app')

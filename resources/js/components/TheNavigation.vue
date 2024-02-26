@@ -1,7 +1,7 @@
 <template>
-    <nav>
-        a main navigation
-    </nav>
+  <nav>
+    a main navigation
+  </nav>
 </template>
 
 <script setup lang="ts">

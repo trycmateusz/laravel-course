@@ -7,14 +7,16 @@
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
+        "@typescript-eslint/eslint-plugin": "^7.0.2",
+        "@typescript-eslint/parser": "^6.21.0",
         "@vitejs/plugin-vue": "^4.5.0",
-        "@vue/eslint-config-typescript": "^12.0.0",
         "axios": "^1.6.4",
         "eslint": "^8.57.0",
         "eslint-plugin-vue": "^9.22.0",
         "laravel-vite-plugin": "^1.0.0",
         "sass": "^1.56.1",
         "typescript": "^5.3.3",
+        "typescript-eslint": "^7.0.2",
         "vite": "^5.0.0",
         "vue": "^3.2.37"
     }

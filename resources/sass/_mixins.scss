@@ -1,0 +1,11 @@
+@use './abstracts/variables' as v;
+
+@mixin padding {
+    padding: v.$base-distance;
+}
+
+@mixin wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}

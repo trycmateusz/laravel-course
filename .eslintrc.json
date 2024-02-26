@@ -5,14 +5,17 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended"
     ],
-    "parser": "@typescript-eslint/parser",
+    "parser": "vue-eslint-parser",
     "parserOptions": {
-        "project": ["./tsconfig.json"]
+        "parser": "@typescript-eslint/parser",
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "vue"
     ],
     "rules": {
-        "semi": "error"
+        "semi": ["error", "never"]
     }
 }

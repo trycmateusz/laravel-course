@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  width: auto;
+  max-width: max-content;
+  font-family: inherit;
+  color: inherit;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+textarea {
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+}
+
+@media (min-width: 576px) {
+  html {
+    font-size: 106.25%;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 118.75%;
+  }
+}

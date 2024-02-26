@@ -1,6 +1,7 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite'
+import { fileURLToPath } from 'url'
+import laravel from 'laravel-vite-plugin'
+import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
     plugins: [
@@ -26,7 +27,7 @@ export default defineConfig({
                     server.ws.send({
                         type: 'full-reload',
                         path: '*',
-                    });
+                    })
                 }
             },
         }
@@ -34,6 +35,18 @@ export default defineConfig({
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
+            "~": fileURLToPath(new URL("./", import.meta.url)),
         },
     },
-});
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `
+                    @use "~/resources/sass/abstracts/colors" as c;
+                    @use "~/resources/sass/abstracts/variables" as v;
+                    @use "~/resources/sass/mixins" as m;
+                `,
+            },
+        },
+    },
+})
