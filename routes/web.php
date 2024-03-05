@@ -23,3 +23,6 @@ Route::get('/users', [UserController::class, 'list'])
 
 Route::get('/users/{id}', [UserController::class, 'show'])
     ->name('get.user.details');
+
+Route::get('/user/create', [UserController::class, 'create'])
+    ->name('get.user.create');

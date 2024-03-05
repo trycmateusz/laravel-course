@@ -34,4 +34,7 @@ class UserController extends Controller {
             'user' => $user
         ]);
     }
+    public function create () {
+        return view('user.create');
+    }
 }

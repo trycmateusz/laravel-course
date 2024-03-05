@@ -4,8 +4,10 @@ const app = createApp({})
 
 import TheNavigation from './components/TheNavigation.vue'
 import TheSidebar from './components/TheSidebar.vue'
+import UserCreateForm from './components/User/UserCreateForm.vue'
 app.component('TheNavigation', TheNavigation)
 app.component('TheSidebar', TheSidebar)
+app.component('UserCreateForm', UserCreateForm)
 
 /**
  * The following block of code may be used to automatically register your

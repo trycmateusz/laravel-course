@@ -1,11 +1,23 @@
 @use './abstracts/variables' as v;
 
-@mixin padding {
-    padding: v.$base-distance;
+@mixin padding($x-ratio: 1, $y-ratio: 1) {
+    padding: Calc(v.$base-distance * $y-ratio) Calc(v.$base-distance * $x-ratio);
 }
 
 @mixin wrapper {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+}
+
+@mixin main-transition {
+    transition: opacity .3s;
+    &:hover,
+    &:focus {
+        opacity: .7;
+    }
+}
+
+@mixin gap($ratio: 1) {
+    gap: Calc(v.$base-distance * $ratio);
 }

@@ -1,20 +1,32 @@
 @use './reset' as r;
+@use 'typography' as t;
 
 html {
     display: flex;
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 .body {
     background-color: c.$white-main;
+    font-family: 'Violet Sans';
 }
 
 #app {
     display: flex;
+    flex-direction: column;
+    justify-content: stretch;
     height: 100%;
-    align-items: stretch;
+    width: 100vw;
 }
 
 .main {
+    flex-grow: 1;
     @include m.padding;
+}
+
+.main-sidebar-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
 }
