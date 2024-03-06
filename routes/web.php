@@ -15,7 +15,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)
+    ->name('get.home');
 
 
 Route::get('/users', [UserController::class, 'list'])

@@ -1,5 +1,5 @@
 @extends('layout.main')
 
 @section('content')
-1231
+Aplication for games - Kewlgame
 @endsection

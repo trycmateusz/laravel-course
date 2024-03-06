@@ -1,0 +1,12 @@
+@use './../../abstracts/colors' as c;
+@use './../../mixins' as m;
+
+.sidebar {
+    background-color: c.$navy-main;
+    color: c.$white-main;
+    &__link {
+        display: block;
+        @include m.padding;
+        @include m.main-transition;
+    }
+}

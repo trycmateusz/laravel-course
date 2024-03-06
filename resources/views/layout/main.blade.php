@@ -13,20 +13,9 @@
 
 <body class="body">
     <div id="app">
-        <the-navigation></the-navigation>
+        @include('shared.navigation')
         <div class="main-sidebar-wrapper">
-            <the-sidebar :links="{{ json_encode([
-                [
-                " id"=> 1,
-                "text" => "Users",
-                "to" => route('get.users')
-                ],
-                [
-                "id" => 2,
-                "text" => "Create",
-                "to" => route('get.user.create')
-                ],
-                ]) }}"></the-sidebar>
+            @include('shared.sidebar')
             <main class="main">
                 @yield('content')
             </main>

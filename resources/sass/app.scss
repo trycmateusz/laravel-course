@@ -1,5 +1,7 @@
 @use './reset' as r;
 @use 'typography' as t;
+@use './views/user' as *;
+@use './views/shared' as *;
 
 html {
     display: flex;
