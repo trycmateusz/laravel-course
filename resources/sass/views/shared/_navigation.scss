@@ -7,7 +7,7 @@
     width: 100%;
     color: c.$white-navy;
     background-color: c.$navy-main;
-    border-bottom: 1px c.$navy-lighter;
+    border-bottom: solid 1px c.$navy-lighter;
     &__link {
         display: inline-block;
         @include m.padding;

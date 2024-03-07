@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Faker\Factory;
+use Illuminate\Http\Request;
 
 class UserController extends Controller {
-    public function list () {
+    public function list (Request $request) {
         $faker = Factory::create();
         $users = [];
         $count = $faker->numberBetween(3, 15);
@@ -17,6 +18,9 @@ class UserController extends Controller {
                 'name' => $faker->firstName
             ];
         }
+        $flashSuccess = $faker->numberBetween(0, 1);
+        session()->flash('flashSuccess', $flashSuccess);
+        session()->now('flashSuccessIgnoreInitially', true);
         return view('user.list', [
             'users' => $users
         ]);

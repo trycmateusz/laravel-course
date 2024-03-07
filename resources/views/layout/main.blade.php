@@ -17,6 +17,9 @@
         <div class="main-sidebar-wrapper">
             @include('shared.sidebar')
             <main class="main">
+                @if (!session()->exists('flashSuccessIgnoreInitially') && session()->exists('flashSuccess'))
+                <the-flash-message :result={{ session()->get('flashSuccess') }}></the-flash-message>
+                @endif
                 @yield('content')
             </main>
         </div>

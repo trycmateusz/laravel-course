@@ -1,5 +1,7 @@
 @extends('layout.main')
 
 @section('content')
-Aplication for games - Kewlgame
+<h1>
+    Aplication for games - Kewlgame
+</h1>
 @endsection

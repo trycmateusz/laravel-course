@@ -14,6 +14,11 @@ html {
     font-family: 'Violet Sans';
 }
 
+h1 {
+    margin-bottom: v.$base-distance;
+    line-height: 1em;
+}
+
 #app {
     display: flex;
     flex-direction: column;

@@ -4,6 +4,7 @@
 .sidebar {
     background-color: c.$navy-main;
     color: c.$white-main;
+    max-width: 33%;
     &__link {
         display: block;
         @include m.padding;

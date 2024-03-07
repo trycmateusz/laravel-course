@@ -3,7 +3,9 @@ import { createApp } from 'vue'
 const app = createApp({})
 
 import UserCreateForm from './components/User/UserCreateForm.vue'
+import TheFlashMessage from './TheFlashMessage.vue'
 app.component('UserCreateForm', UserCreateForm)
+app.component('TheFlashMessage', TheFlashMessage)
 
 /**
  * The following block of code may be used to automatically register your
