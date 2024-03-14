@@ -15,5 +15,10 @@
                 Create user
             </a>
         </li>
+        <li>
+            <a class="sidebar__link" href="{{ route('games.index')}}">
+                Games
+            </a>
+        </li>
     </ul>
 </aside>

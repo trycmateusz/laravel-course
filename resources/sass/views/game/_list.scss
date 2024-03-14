@@ -1,0 +1,62 @@
+@use './../../mixins' as m;
+@use './../../abstracts/colors' as c;
+@use './../../abstracts/variables' as v;
+
+.game-list {
+    width: max-content;
+    max-width: 1000px;
+    border-inline: 1px solid c.$navy-lighter;
+    overflow-x: auto;
+    tr {
+        width: 100%;
+        border-top: 1px solid c.$navy-lighter;
+         &:last-child {
+            border-bottom: 1px solid c.$navy-lighter;
+         }
+    }
+    th,
+    td {
+        border-right: 1px solid c.$navy-lighter;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        @include m.padding(1, 0.5);
+        &:last-child {
+            border-right: 0;
+        }
+        &[data-column="nr"]{
+            text-align: center;
+        }
+        &[data-column="title"] {
+            width: 100%;
+        }
+    }
+    tbody {
+        border-top: 1px solid c.$navy-lighter
+    }
+    &__game {
+        &-link {
+            color: c.$navy-lighter;
+            @include m.main-transition;
+        }
+    }
+}
+
+.games-stats {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: v.$base-distance;
+    @include m.gap;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        @include m.gap;
+    }
+    &__stat {
+        display: inline-block;
+        border: 1px solid c.$navy-light;
+        @include m.padding;
+        &-highlight {
+            color: c.$navy-light;
+        }
+    }
+}

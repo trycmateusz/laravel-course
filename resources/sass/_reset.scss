@@ -44,6 +44,12 @@ textarea {
   font-family: inherit;
 }
 
+table {
+    border-spacing: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
 @media (min-width: 576px) {
   html {
     font-size: 106.25%;

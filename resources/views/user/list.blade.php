@@ -2,7 +2,7 @@
 
 @extends('layout.main')
 
-@section('title', 'Uzytkownicy')
+@section('title', 'Users')
 
 @section('content')
 <h1>

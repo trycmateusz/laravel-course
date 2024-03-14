@@ -18,7 +18,7 @@ class GamesSeeder extends Seeder
         DB::table('games')->truncate();
         $faker = Factory::create();
         $games = [];
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $games[] = [
                 'title' => $faker->words($faker->numberBetween(1, 3), true),
                 'description' => $faker->sentence(),
@@ -27,6 +27,7 @@ class GamesSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
                 'published_at' => Carbon::now(),
+                'score' => $faker->randomFloat(1, 0, 10),
                 'tags' => $faker->optional()->randomElement(['Co-Op', 'Multiplayer', 'Singleplayer', 'Souls-like'])
             ];
         }

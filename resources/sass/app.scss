@@ -2,6 +2,7 @@
 @use 'typography' as t;
 @use './views/user' as *;
 @use './views/shared' as *;
+@use './views/game' as *;
 
 html {
     display: flex;
@@ -36,4 +37,5 @@ h1 {
     flex-grow: 1;
     display: flex;
     align-items: stretch;
+    margin-top: v.$nav-height;
 }

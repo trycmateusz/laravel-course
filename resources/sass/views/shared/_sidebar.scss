@@ -1,9 +1,14 @@
 @use './../../abstracts/colors' as c;
+@use './../../abstracts/variables' as v;
 @use './../../mixins' as m;
 
 .sidebar {
+    position: sticky;
+    top: v.$nav-height;
+    left: 0;
     background-color: c.$navy-main;
     color: c.$white-main;
+    height: Calc(100svh - v.$nav-height);
     max-width: 33%;
     &__link {
         display: block;

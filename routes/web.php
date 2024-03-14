@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,6 @@ Route::get('/users/{id}', [UserController::class, 'show'])
 
 Route::get('/user/create', [UserController::class, 'create'])
     ->name('get.user.create');
+
+Route::apiResource('/games', GameController::class)
+    ->only(['index', 'show']);

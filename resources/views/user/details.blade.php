@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Uzytkownik ' . $user['id'])
+@section('title', 'Kewlgame - User ' . $user['id'])
 
 @section('content')
 <h1>
