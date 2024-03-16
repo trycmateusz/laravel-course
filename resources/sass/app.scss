@@ -13,6 +13,7 @@ html {
 .body {
     background-color: c.$white-main;
     font-family: 'Violet Sans';
+    overflow-x: hidden;
 }
 
 h1 {
@@ -25,17 +26,15 @@ h1 {
     flex-direction: column;
     justify-content: stretch;
     height: 100%;
-    width: 100vw;
 }
 
 .main {
-    flex-grow: 1;
+    min-width: 0;
     @include m.padding;
 }
 
 .main-sidebar-wrapper {
-    flex-grow: 1;
     display: flex;
-    align-items: stretch;
+    width: 100%;
     margin-top: v.$nav-height;
 }

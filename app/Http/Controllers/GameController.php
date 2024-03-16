@@ -13,7 +13,13 @@ class GameController extends Controller
     public function index(): View
     {
         $games = DB::table('games')
-            ->select('id', 'title', 'score', 'genre_id')
+            ->join('genres', 'games.genre_id', '=', 'genres.id')
+            ->select('games.id', 'games.title', 'games.score', 'genres.name as  genre_name')
+            ->get();
+        $bestGames = DB::table('games')
+            ->join('genres', 'games.genre_id', '=', 'genres.id')
+            ->select('games.id', 'games.title', 'games.score', 'genres.name as  genre_name')
+            ->where('score', '>', 9)
             ->get();
         $stats = [
             'max' => DB::table('games')->max('score'),
@@ -24,6 +30,7 @@ class GameController extends Controller
         ];
         return view('game.list', [
             'games' => $games,
+            'bestGames' => $bestGames,
             'stats' => $stats
         ]);
     }

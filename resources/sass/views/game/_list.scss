@@ -5,13 +5,28 @@
 .game-list {
     width: max-content;
     max-width: 1000px;
-    border-inline: 1px solid c.$navy-lighter;
-    overflow-x: auto;
+    &-table-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-block: v.$base-distance;
+        overflow-x: auto;
+        max-width: max-content;
+        border: 1px solid c.$navy-lighter;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        ::-webkit-scrollbar-horizontal {
+            position: sticky;
+            top: 0;
+        }
+        color: #000;
+    }
     tr {
         width: 100%;
         border-top: 1px solid c.$navy-lighter;
-         &:last-child {
-            border-bottom: 1px solid c.$navy-lighter;
+
+         &:first-child {
+            border-top: 0;
          }
     }
     th,
