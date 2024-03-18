@@ -15,7 +15,13 @@ class GameController extends Controller
         $games = DB::table('games')
             ->join('genres', 'games.genre_id', '=', 'genres.id')
             ->select('games.id', 'games.title', 'games.score', 'genres.name as  genre_name')
-            ->get();
+            ->paginate(10);
+        return view('game.list', [
+            'games' => $games
+        ]);
+    }
+    public function dashboard(): View
+    {
         $bestGames = DB::table('games')
             ->join('genres', 'games.genre_id', '=', 'genres.id')
             ->select('games.id', 'games.title', 'games.score', 'genres.name as  genre_name')
@@ -28,8 +34,7 @@ class GameController extends Controller
             'scoreGreaterThanSeven' => DB::table('games')->where('score', '>', 7)->count(),
             'count' => DB::table('games')->count()
         ];
-        return view('game.list', [
-            'games' => $games,
+        return view('game.dashboard', [
             'bestGames' => $bestGames,
             'stats' => $stats
         ]);

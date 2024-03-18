@@ -16,8 +16,8 @@
             </a>
         </li>
         <li>
-            <a class="sidebar__link" href="{{ route('games.index')}}">
-                Games
+            <a class="sidebar__link" href="{{ route('games.dashboard')}}">
+                Dashboard
             </a>
         </li>
     </ul>

@@ -29,5 +29,8 @@ Route::get('/users/{id}', [UserController::class, 'show'])
 Route::get('/user/create', [UserController::class, 'create'])
     ->name('get.user.create');
 
+Route::get('games/dashboard', [GameController::class, 'dashboard'])
+    ->name('games.dashboard');
+
 Route::apiResource('/games', GameController::class)
     ->only(['index', 'show']);

@@ -56,22 +56,33 @@
     }
 }
 
-.games-stats {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: v.$base-distance;
-    @include m.gap;
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        @include m.gap;
-    }
-    &__stat {
+.games {
+    &-link {
         display: inline-block;
-        border: 1px solid c.$navy-light;
+        color: c.$white-main !important;
+        background-color: c.$navy-main;
+        margin-bottom: v.$base-distance;
         @include m.padding;
-        &-highlight {
-            color: c.$navy-light;
+        @include m.main-transition;
+    }
+    &-stats {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: v.$base-distance;
+        @include m.gap;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            @include m.gap;
+        }
+        &__stat {
+            display: inline-block;
+            border: 1px solid c.$navy-light;
+            @include m.padding;
+            &-highlight {
+                color: c.$navy-light;
+            }
         }
     }
+
 }

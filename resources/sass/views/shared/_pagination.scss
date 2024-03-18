@@ -1,0 +1,62 @@
+@use './../../mixins' as m;
+@use './../../abstracts/colors' as c;
+@use './../../abstracts/variables' as v;
+
+.laravel-pagination {
+    $page-dimension: 2rem;
+    &__buttons {
+        display: flex;
+        @include m.gap;
+        span, a {
+            display: inline-block;
+            color: c.$white-main;
+            background-color: c.$navy-main;
+            @include m.padding;
+        }
+        a {
+            @include m.main-transition;
+        }
+        span {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+    }
+    &__pages {
+        display: flex;
+        margin-top: v.$base-distance;
+        @include m.gap(.5);
+        &-previous-next {
+            width: $page-dimension;
+            height: $page-dimension;
+            &:is(a) {
+                @include m.main-transition;
+            }
+            &:is(span){
+                opacity: .5;
+            }
+        }
+        &-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: $page-dimension;
+            height: $page-dimension;
+            line-height: 1;
+            border: 1px solid c.$navy-main;
+            &[aria-current="page"]{
+                background-color: c.$navy-main;
+                color: c.$white-main;
+            }
+            &:is(a) {
+                @include m.main-transition;
+            }
+        }
+    }
+    p {
+        display: none;
+    }
+    svg {
+        max-width: $page-dimension;
+        max-height: $page-dimension;
+    }
+}
