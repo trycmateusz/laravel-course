@@ -6,7 +6,7 @@
 <h1>
     All info about games
 </h1>
-<a href={{ route('games.index') }} class="games-link">
+<a href={{ route('get.b.games.list') }} class="games-link">
     All games
 </a>
 <div class="games-stats">
@@ -53,7 +53,7 @@
                     Score
                 </th>
                 <th data-column="genre_id">
-                    Category
+                    Genre
                 </th>
                 <th data-column="options">
                     Options
@@ -76,7 +76,7 @@
                     {{ $game->genre_name }}
                 </td>
                 <td data-column="options">
-                    <a class="game-list__game-link" href="{{ route('games.show', ['game' => $game->id]) }}">
+                    <a class="game-list__game-link" href="{{ route('get.b.games.details', ['id' => $game->id]) }}">
                         Details
                     </a>
                 </td>

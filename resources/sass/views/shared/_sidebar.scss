@@ -7,12 +7,20 @@
     top: v.$nav-height;
     left: 0;
     background-color: c.$navy-main;
-    color: c.$white-main;
+    color: c.$white-navy;
     height: Calc(100svh - v.$nav-height);
-    max-width: max-content;
+    min-width: max-content;
+    overflow-x: auto;
     &__link {
         display: block;
         @include m.padding;
         @include m.main-transition;
+    }
+    &__group-name {
+        display: block;
+        font-weight: bold;
+        color: c.$white-main;
+        border-top: 1px solid c.$navy-lighter;
+        @include m.padding;
     }
 }

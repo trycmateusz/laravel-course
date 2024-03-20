@@ -15,10 +15,39 @@
                 Create user
             </a>
         </li>
-        <li>
-            <a class="sidebar__link" href="{{ route('games.dashboard')}}">
-                Dashboard
-            </a>
+        <li class="sidebar__sublist">
+            <span class="sidebar__group-name">
+                Builder
+            </span>
+            <ul>
+                <li>
+                    <a class="sidebar__link" href="{{ route('get.b.games.dashboard')}}">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__link" href="{{ route('get.b.games.list')}}">
+                        Games
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar__sublist">
+            <span class="sidebar__group-name">
+                Eloquent
+            </span>
+            <ul>
+                <li>
+                    <a class="sidebar__link" href="{{ route('get.e.games.dashboard')}}">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__link" href="{{ route('get.e.games.list')}}">
+                        Games
+                    </a>
+                </li>
+            </ul>
         </li>
     </ul>
 </aside>

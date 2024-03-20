@@ -23,6 +23,7 @@
     }
     &__pages {
         display: flex;
+        flex-wrap: wrap;
         margin-top: v.$base-distance;
         @include m.gap(.5);
         &-previous-next {

@@ -41,10 +41,10 @@
                     {{ $game->score }}
                 </td>
                 <td data-column="genre_id">
-                    {{ $game->genre_name }}
+                    {{ $game->genre->name }}
                 </td>
                 <td data-column="options">
-                    <a class="game-list__game-link" href="{{ route('games.show', ['game' => $game->id]) }}">
+                    <a class="game-list__game-link" href="{{ route('get.b.games.details', ['id' => $game->id]) }}">
                         Details
                     </a>
                 </td>

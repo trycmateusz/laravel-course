@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\GameController;
+use App\Http\Controllers\Game\GameBuilderController;
+use App\Http\Controllers\Game\GameEloquentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ use App\Http\Controllers\GameController;
 Route::get('/', HomeController::class)
     ->name('get.home');
 
-
+//USERS
 Route::get('/users', [UserController::class, 'list'])
     ->name('get.users');
 
@@ -29,8 +30,31 @@ Route::get('/users/{id}', [UserController::class, 'show'])
 Route::get('/user/create', [UserController::class, 'create'])
     ->name('get.user.create');
 
-Route::get('games/dashboard', [GameController::class, 'dashboard'])
-    ->name('games.dashboard');
+//GAMES
+Route::group([
+    'prefix' => '/b/games',
+    'as' => 'get.b.games.'
+], function () {
+    Route::get('/dashboard', [GameBuilderController::class, 'dashboard'])
+        ->name('dashboard');
 
-Route::apiResource('/games', GameController::class)
-    ->only(['index', 'show']);
+    Route::get('/', [GameBuilderController::class, 'index'])
+        ->name('list');
+
+    Route::get('/{id}', [GameBuilderController::class, 'show'])
+        ->name('details');
+});
+
+Route::group([
+    'prefix' => '/e/games',
+    'as' => 'get.e.games.'
+], function () {
+    Route::get('/dashboard', [GameEloquentController::class, 'dashboard'])
+        ->name('dashboard');
+
+    Route::get('/', [GameEloquentController::class, 'index'])
+        ->name('list');
+
+    Route::get('/{id}', [GameEloquentController::class, 'show'])
+        ->name('details');
+});

@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    color: c.$white-navy;
+    color: c.$white-main;
     background-color: c.$navy-main;
     border-bottom: solid 1px c.$navy-lighter;
     z-index: 50;
@@ -13,5 +13,8 @@
         display: inline-block;
         @include m.padding;
         @include m.main-transition;
+        &:first-child {
+            font-weight: bold;
+        }
     }
 }

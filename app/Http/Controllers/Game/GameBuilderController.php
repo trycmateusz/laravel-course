@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Game;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class GameController extends Controller
+class GameBuilderController extends Controller
 {
     public function index(): View
     {
@@ -16,7 +16,7 @@ class GameController extends Controller
             ->join('genres', 'games.genre_id', '=', 'genres.id')
             ->select('games.id', 'games.title', 'games.score', 'genres.name as  genre_name')
             ->paginate(10);
-        return view('game.list', [
+        return view('game.builder.list', [
             'games' => $games
         ]);
     }
@@ -34,58 +34,18 @@ class GameController extends Controller
             'scoreGreaterThanSeven' => DB::table('games')->where('score', '>', 7)->count(),
             'count' => DB::table('games')->count()
         ];
-        return view('game.dashboard', [
+        return view('game.builder.dashboard', [
             'bestGames' => $bestGames,
             'stats' => $stats
         ]);
     }
 
-    public function show(int $gameId): View
+    public function show(int $id): View
     {
         $game = DB::table('games')
-            ->find($gameId);
-        return view('game.show', [
+            ->find($id);
+        return view('game.builder.details', [
             'game' => $game
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
