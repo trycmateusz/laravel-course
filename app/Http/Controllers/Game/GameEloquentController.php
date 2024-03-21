@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\Game;
+use Carbon\Carbon;
 
 class GameEloquentController extends Controller
 {
@@ -19,8 +20,7 @@ class GameEloquentController extends Controller
     }
     public function dashboard(): View
     {
-        $bestGames = Game::with('genre')
-            ->best()
+        $bestGames = Game::best()
             ->get();
         $stats = [
             'max' => Game::max('score'),
