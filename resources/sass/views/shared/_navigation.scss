@@ -1,4 +1,5 @@
 @use './../../abstracts/colors' as c;
+@use './../../abstracts/variables' as v;
 @use './../../mixins' as m;
 
 .nav {
@@ -9,12 +10,26 @@
     background-color: c.$navy-main;
     border-bottom: solid 1px c.$navy-lighter;
     z-index: 50;
-    &__link {
-        display: inline-block;
-        @include m.padding;
-        @include m.main-transition;
-        &:first-child {
-            font-weight: bold;
+    &-list {
+        display: flex;
+        align-items: center;
+        li {
+            &:first-child {
+                margin-right: auto;
+            }
+        }
+        &__link {
+            display: inline-block;
+            @include m.padding;
+            @include m.main-transition;
+            &:first-child {
+                font-weight: bold;
+            }
+        }
+        &__text {
+            display: inline-block;
+            line-height: 1;
+            margin-right: v.$base-distance;
         }
     }
 }

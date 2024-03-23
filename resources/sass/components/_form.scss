@@ -1,0 +1,39 @@
+@use './../mixins' as m;
+@use './../abstracts/colors' as c;
+@use './../abstracts/variables' as v;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    @include m.gap;
+    &__input {
+        max-width: 800px;
+        width: 100%;
+        min-width: 250px;
+        &:focus {
+            color: c.$navy-main;
+        }
+        @include m.padding(0.5, 0.5);
+        @include m.main-transition;
+        &-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+        &.is-invalid {
+            border: 1px solid orangered;
+        }
+    }
+    &__label {
+        font-size: 1rem;
+    }
+    &__button {
+        font-size: 1rem;
+        background-color: c.$navy-main;
+        color: c.$white-navy;
+        @include m.padding($x-ratio: 2);
+        @include m.main-transition;
+    }
+    &__error {
+        opacity: 0.5;
+    }
+}

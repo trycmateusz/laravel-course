@@ -1,0 +1,5 @@
+@use './../../mixins' as m;
+
+.link {
+    @include m.main-transition;
+}

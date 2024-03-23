@@ -1,8 +1,10 @@
 @use './reset' as r;
 @use 'typography' as t;
-@use './views/user' as *;
-@use './views/shared' as *;
-@use './views/game' as *;
+@use './components/' as *;
+@use './views/user/' as *;
+@use './views/shared/' as *;
+@use './views/game/' as *;
+@use './views/auth/' as *;
 
 html {
     display: flex;
