@@ -1,0 +1,13 @@
+@use './../abstracts/variables' as v;
+@use './../abstracts/colors'as c;
+@use './../mixins' as m;
+
+.alert {
+    max-width: max-content;
+    margin-bottom: v.$base-distance;
+    border: 1px solid c.$white-navy;
+    @include m.padding;
+    &--success {
+        border: 1px solid #46b146;
+    }
+}

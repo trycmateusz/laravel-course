@@ -18,6 +18,23 @@
         </li>
         <li class="sidebar__sublist">
             <span class="sidebar__group-name">
+                Controls
+            </span>
+            <ul>
+                <li>
+                    <a class="sidebar__link" href="{{ route('get.games.dashboard')}}">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a class="sidebar__link" href="{{ route('get.games.list')}}">
+                        Games
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar__sublist">
+            <span class="sidebar__group-name">
                 Builder
             </span>
             <ul>

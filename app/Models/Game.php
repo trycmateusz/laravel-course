@@ -19,7 +19,7 @@ class Game extends Model
         'title', 'description', 'score', 'publisher_id', 'genre_id', 'published_at'
     ];
     protected static function booted() {
-        static::addGlobalScope(new LastWeekScope);
+
     }
     public function genre(): BelongsTo {
         return $this->belongsTo(Genre::class);

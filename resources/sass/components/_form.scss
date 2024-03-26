@@ -7,8 +7,8 @@
     flex-direction: column;
     @include m.gap;
     &__input {
-        max-width: 800px;
-        width: 100%;
+        max-width: 600px;
+        width: 60%;
         min-width: 250px;
         &:focus {
             color: c.$navy-main;
@@ -34,6 +34,6 @@
         @include m.main-transition;
     }
     &__error {
-        opacity: 0.5;
+        opacity: 0.85;
     }
 }

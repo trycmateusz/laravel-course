@@ -1,10 +1,10 @@
 @use './reset' as r;
 @use 'typography' as t;
 @use './components/' as *;
+@use './utilities/' as *;
 @use './views/user/' as *;
 @use './views/shared/' as *;
 @use './views/game/' as *;
-@use './views/auth/' as *;
 
 html {
     display: flex;
@@ -27,16 +27,19 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
+    min-width: 100svw;
     height: 100%;
 }
 
 .main {
     min-width: 0;
+    flex-grow: 1;
     @include m.padding;
 }
 
 .main-sidebar-wrapper {
     display: flex;
     width: 100%;
+    flex-grow: 1;
     margin-top: v.$nav-height;
 }

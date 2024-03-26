@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Game;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\DB;
 use App\Models\Game;
-use Carbon\Carbon;
 
 class GameEloquentController extends Controller
 {
