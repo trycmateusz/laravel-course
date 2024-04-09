@@ -4,33 +4,34 @@ namespace App\Http\Controllers\Game;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
-use App\Repositories\GameRepository;
+
+use App\Services\GameService;
 
 class GameController extends Controller
 {
-    private GameRepository $gameRepository;
-    public function __construct(GameRepository $gameRepository)
+    private gameService $gameService;
+    public function __construct(gameService $gameService)
     {
-        $this->gameRepository = $gameRepository;
+        $this->gameService = $gameService;
     }
     public function index(): View
     {
         return view('game.list', [
-            'games' => $this->gameRepository->allPaginated(10)
+            'games' => $this->gameService->allPaginated(10)
         ]);
     }
     public function dashboard(): View
     {
         return view('game.dashboard', [
-            'bestGames' => $this->gameRepository->best(),
-            'stats' => $this->gameRepository->stats()
+            'bestGames' => $this->gameService->best(),
+            'stats' => $this->gameService->stats()
         ]);
     }
 
     public function show(int $id): View
     {
         return view('game.details', [
-            'game' => $this->gameRepository->get($id)
+            'game' => $this->gameService->get($id)
         ]);
     }
 }
