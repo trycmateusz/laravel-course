@@ -5,34 +5,49 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Models\Game;
+use Ramsey\Collection\Set as CollectionSet;
 
 class GameRepository implements GameRepositoryInterface {
-    protected $model;
-    public function __construct(Game $model)
+    public const TYPE_DEFAULT = 'game';
+    public const TYPE_ANY = 'any';
+    public const TYPES = array('any', 'game', 'dlc', 'demo', 'episode', 'mod', 'movie', 'music', 'series', 'video');
+    private Game $gameModel;
+    public function __construct(Game $gameModel)
     {
-        $this->model = $model;
+        $this->gameModel = $gameModel;
     }
     public function get(int $id){
-        return Game::find($id);
+        return $this->gameModel->find($id);
     }
     public function all() {
-        return Game::with('genre');
+        return $this->gameModel->with('genres');
     }
     public function allPaginated(int $limit) {
-        return Game::with('genre')
+        return $this->gameModel->with('genres')
             ->paginate($limit);
     }
     public function best() {
-        return Game::best()
+        return $this->gameModel->best()
+            ->with('genres')
             ->get();
     }
     public function stats() {
         return [
-            'max' => Game::max('score'),
-            'min' => Game::min('score'),
-            'avg' => Game::avg('score'),
-            'scoreGreaterThanSeven' => Game::where('score', '>', 7)->count(),
-            'count' => Game::count()
+            'max' => $this->gameModel->max('metacritic_score'),
+            'min' => $this->gameModel->min('metacritic_score'),
+            'avg' => $this->gameModel->avg('metacritic_score'),
+            'scoreGreaterThanSeven' => $this->gameModel->where('metacritic_score', '>', 7)->count(),
+            'count' => $this->gameModel->count()
         ];
+    }
+    public function filterBy(?string $search, ?string $type = self::TYPE_DEFAULT, int $limit = 15) {
+        $query = $this->gameModel->with('genres')->orderBy('created_at');
+        if($search) {
+            $query->whereRaw('name like ?', ["$search%"]);
+        }
+        if($type && $type !== self::TYPE_ANY){
+            $query->where('type', $type);
+        }
+        return $query->paginate($limit);
     }
 }

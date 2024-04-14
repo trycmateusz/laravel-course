@@ -1,0 +1,13 @@
+@use './../../abstracts/variables' as v;
+@use './../../abstracts/colors' as c;
+@use './../../mixins' as m;
+
+.me-profile {
+    &__link {
+        display: inline-block;
+        margin-top: v.$base-distance;
+        color: c.$white-main !important;
+        background-color: c.$navy-main;
+        @include m.padding;
+    }
+}

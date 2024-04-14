@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Game\GameController;
 use App\Http\Controllers\Game\GameBuilderController;
 use App\Http\Controllers\Game\GameEloquentController;
@@ -28,6 +29,20 @@ Route::group([
 ], function () {
     Route::get('/', HomeController::class)
         ->name('get.home');
+
+    //USERS - M_E
+
+    Route::group([
+        'prefix' => '/me',
+        'as' => 'me.'
+    ], function () {
+        Route::get('/profile', [ProfileController::class, 'profile'])
+            ->name('profile');
+        Route::get('/edit', [ProfileController::class, 'edit'])
+            ->name('edit');
+        Route::get('/update', [ProfileController::class, 'update'])
+            ->name('update');
+    });
 
     //USERS
 

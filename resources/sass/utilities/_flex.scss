@@ -1,5 +1,11 @@
 @use './../mixins' as m;
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    @include m.gap;
+}
+
 .login__controls {
     display: flex;
     flex-direction: column;

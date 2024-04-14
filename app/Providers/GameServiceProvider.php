@@ -15,8 +15,7 @@ class GameServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(GameRepository::class, Game::class);
-        $this->app->bind(GameService::class, GameRepository::class);
+
     }
 
     /**

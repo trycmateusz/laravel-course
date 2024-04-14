@@ -6,8 +6,8 @@
         name="{{ $name }}" value="{{ $value }}" required autocomplete="email" autofocus>
 
     @error($errorName)
-    <span class="form__error" role="alert">
-        {{ $message }}
-    </span>
+        <span class="form__error" role="alert">
+            {{ $message }}
+        </span>
     @enderror
 </div>

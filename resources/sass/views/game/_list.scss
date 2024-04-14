@@ -54,6 +54,20 @@
             @include m.main-transition;
         }
     }
+    &__search-form {
+        display: flex;
+        align-items: center;
+        @include m.gap;
+        input {
+            @include m.padding(.5, .5)
+        }
+        &-button {
+            color: c.$white-main;
+            background-color: c.$navy-main;
+            @include m.padding(1, .5);
+            @include m.main-transition;
+        }
+    }
 }
 
 .games {

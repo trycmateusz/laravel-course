@@ -10,4 +10,5 @@ interface GameRepositoryInterface {
     public function allPaginated(int $limit);
     public function best();
     public function stats();
+    public function filterBy(?string $search, ?string $type, int $limit = 15);
 }

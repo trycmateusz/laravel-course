@@ -32,6 +32,11 @@
         color: c.$white-navy;
         @include m.padding($x-ratio: 2);
         @include m.main-transition;
+        &.secondary {
+            background-color: transparent;
+            border: 1px solid c.$navy-main;
+            color: c.$navy-main;
+        }
     }
     &__error {
         opacity: 0.85;

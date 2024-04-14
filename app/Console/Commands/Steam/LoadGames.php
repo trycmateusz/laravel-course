@@ -49,7 +49,7 @@ class LoadGames extends Command
         $responseContent = $response->json();
         $apps = $responseContent['applist']['apps'];
         $jsonApps = json_encode($apps);
-        $res = file_put_contents($this->temporaryGamesList, $jsonApps);
+        file_put_contents($this->temporaryGamesList, $jsonApps);
         $this->info('LOADED!!!');
     }
 
@@ -77,6 +77,7 @@ class LoadGames extends Command
             ->select('steam_appid')
             ->pluck('steam_appid')
             ->toArray();
+
         $savedGames = array_flip($savedGames);
 
         $genres = DB::table('genres')
@@ -98,8 +99,6 @@ class LoadGames extends Command
                 $this->info(' - ' . $appId);
                 continue;
             }
-
-            sleep(1);
 
             $steamGameDetailsUrl = config('steam.api.games.details');
             $response = $this->httpClient->get(
@@ -124,8 +123,7 @@ class LoadGames extends Command
             try {
                 $this->create($data);
             } catch (\Throwable $e) {
-                dump($data);
-                dump($e);
+                $this->error('Error when setting the data' . $e->getMessage());
                 continue;
             }
 
@@ -143,12 +141,10 @@ class LoadGames extends Command
     private function create($data)
     {
         $result = DB::transaction(function () use ($data) {
-
             $data = array_shift($data);
             if ($data['success'] !== true) {
                 return;
             }
-
             $data = $data['data'];
             $game = [
                 'steam_appid' => $data['steam_appid'],
@@ -172,9 +168,7 @@ class LoadGames extends Command
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];
-
             $gameId = DB::table('games')->insertGetId($game);
-
             foreach ($data['genres'] ?? [] as $genre) {
                 if (empty($this->genres[$genre['id']])) {
                     $genreData = [
@@ -183,14 +177,14 @@ class LoadGames extends Command
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now()
                     ];
-                    $result = DB::table('genres')->insert($genreData);
+                    $result = DB::table('genres')->insertGetId($genreData);
                     $this->genres[$genreData['id']] = $genreData;
-                }
 
-                DB::table('gameGenres')->insert([
-                    'game_id' => $gameId,
-                    'genre_id' => $genre['id']
-                ]);
+                    DB::table('game_genres')->insertGetId([
+                        'game_id' => $gameId,
+                        'genre_id' => $genre['id']
+                    ]);
+                }
             }
 
             foreach ($data['publishers'] ?? [] as $publisher) {
@@ -203,14 +197,12 @@ class LoadGames extends Command
                     $publisherId = DB::table('publishers')->insertGetId($publisherData);
                     $publisherData['id'] = $publisherId;
                     $this->publishers[$publisher] = $publisherData;
+
+                    DB::table('game_publishers')->insert([
+                        'game_id' => $gameId,
+                        'publisher_id' => $publisherId
+                    ]);
                 }
-
-                $publisherId = $this->publishers[$publisher]['id'];
-
-                DB::table('gamePublishers')->insert([
-                    'game_id' => $gameId,
-                    'publisher_id' => $publisherId
-                ]);
             }
 
             foreach ($data['developers'] ?? [] as $developer) {
@@ -223,14 +215,12 @@ class LoadGames extends Command
                     $developerId = DB::table('developers')->insertGetId($developerData);
                     $developerData['id'] = $developerId;
                     $this->developers[$developer] = $developerData;
+
+                    DB::table('game_developers')->insert([
+                        'game_id' => $gameId,
+                        'developer_id' => $developerId
+                    ]);
                 }
-
-                $developerId = $this->developers[$developer]['id'];
-
-                DB::table('gameDevelopers')->insert([
-                    'game_id' => $gameId,
-                    'developer_id' => $developerId
-                ]);
             }
 
             foreach ($data['screenshots'] ?? [] as $screenshot) {

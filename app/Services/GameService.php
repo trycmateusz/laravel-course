@@ -27,4 +27,7 @@ class GameService {
     public function stats() {
         return $this->repository->stats();
     }
+    public function filterBy(?string $search, ?string $type = GameRepository::TYPE_DEFAULT, int $limit = 15) {
+        return $this->repository->filterBy($search, $type, $limit);
+    }
 }

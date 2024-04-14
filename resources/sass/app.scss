@@ -5,6 +5,7 @@
 @use './views/user/' as *;
 @use './views/shared/' as *;
 @use './views/game/' as *;
+@use './views/me' as *;
 
 html {
     display: flex;

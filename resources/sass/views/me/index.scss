@@ -1,0 +1,15 @@
+@forward 'profile';
+@use './../../abstracts/colors' as c;
+
+.me {
+    &__avatar {
+        background: #eee;
+    }
+    &__list {
+        &-element {
+            &--highlight {
+                font-weight: bold;
+            }
+        }
+    }
+}
